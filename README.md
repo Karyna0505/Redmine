@@ -1,8 +1,8 @@
-...................###...................
+.......................................###.....................................
 
 Playwright Test runner "REDMINE" project
 
-...................###...................
+.......................................###.....................................
 
 ## Setup
 
@@ -11,8 +11,8 @@ Playwright Test runner "REDMINE" project
 - Download and install Node.JS ( at least v18.12.1)
 - Install Visual Studio Code
 - Clone and checkout the github project (git clone ) https://github.com/Karyna0505/Redmine.git
-- Open holder (cd redmine)
-- Go to the terminal and execute "npm install" inside the checked out folder (npm init playwright@latest)
+- Open folder (cd redmine)
+- Go to the terminal and execute "npm install" inside the checked out folder 
 
 ### How to run the tests 
 
