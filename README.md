@@ -1,4 +1,8 @@
+...................###...................
+
 Playwright Test runner "REDMINE" project
+
+...................###...................
 
 ## Setup
 
@@ -22,3 +26,4 @@ For instance I defined the RegistrationPage, AutorizationPage and SearchPage and
 ### Open Allure Report:
 ```bash
 allure open allure-report
+
