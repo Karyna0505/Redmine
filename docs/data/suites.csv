@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Dec 07 12:48:08 CET 2022","Wed Dec 07 12:48:15 CET 2022","7559","chromium","hometask.spec.ts","","","","Registration on the site with invalid data (empty fields).",""
+"passed","Wed Dec 07 12:48:08 CET 2022","Wed Dec 07 12:48:15 CET 2022","7734","chromium","hometask.spec.ts","","","","Search results with invalid entered data.",""
+"passed","Wed Dec 07 12:48:08 CET 2022","Wed Dec 07 12:48:16 CET 2022","8594","chromium","hometask.spec.ts","","","","Authorization on the site with valid data.",""
+"passed","Wed Dec 07 12:48:08 CET 2022","Wed Dec 07 12:48:22 CET 2022","14327","chromium","hometask.spec.ts","","","","Registration on the site with valid data.",""
+"passed","Wed Dec 07 12:48:08 CET 2022","Wed Dec 07 12:48:15 CET 2022","7763","chromium","hometask.spec.ts","","","","Search results with valid entered data.",""
