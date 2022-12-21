@@ -7,9 +7,9 @@ export default class RegistrationPage {
         await this.page.click('[href*="register"]');
     }
      
-    async enterUserLogin(userlogin: string) {
+    async enterUserLogin(userLogin: string) {
         await this.page.locator('#user_login')
-            .type(userlogin);
+            .type(userLogin);
     }
 
     async enterPassword(password: string) {
@@ -17,19 +17,19 @@ export default class RegistrationPage {
             .type(password);
     }
 
-    async enterConfirmPassword(confirmpassword: string) {
+    async enterConfirmPassword(confirmPassword: string) {
         await this.page.locator('#user_password_confirmation')
-            .type(confirmpassword);
+            .type(confirmPassword);
     }
 
-    async enterFirstName(firstname: string) {
+    async enterFirstName(firstName: string) {
         await this.page.locator('#user_firstname')
-            .type(firstname);
+            .type(firstName);
     }
 
-    async enterLastName(lastname: string) {
+    async enterLastName(lastName: string) {
         await this.page.locator('#user_lastname')
-            .type(lastname);
+            .type(lastName);
     }
 
     async enterEmail(email: string) {
@@ -48,9 +48,9 @@ export default class RegistrationPage {
 
     
 
-    async enterIrkNick(irknick: string) {
+    async enterIrkNick(irkNick: string) {
         await this.page.locator('#user_custom_field_values_3')
-            .type(irknick);
+            .type(irkNick);
     }
     
     async clickAcceptButton() {
