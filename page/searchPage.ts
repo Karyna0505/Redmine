@@ -1,24 +1,27 @@
-import { Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 export default class SearchPage {
-    
+    readonly page: Page;
+    readonly searchField: Locator;
+    readonly searchResult: Locator;
+    readonly noFoundMessage: Locator;
 
-    get searchField() {
-        return this.page.locator('//*[@id="q"]');
+    constructor(page: Page) {
+        this.searchField = page.locator('//*[@id="q"]');
+        this.searchResult = page.locator('#search-results');
+        this.noFoundMessage = page.locator('#search-results-counts');
     }
-
-    constructor(public page: Page) {}
-
-    
     
 
     async clickSearchField() {
-        await this.page.click('//*[@id="q"]');
+        await this.searchField.click();
+        expect(this.searchField).toBeFocused();
     }
 
     
     async enterSearchField(search: string) {
-        
         await this.searchField.type(search);
+        await expect(this.searchField).not.toBeEmpty();
+        await this.searchField.press('Enter');
     }
     
 

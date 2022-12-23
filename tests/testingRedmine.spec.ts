@@ -5,52 +5,55 @@ import SearchPage from '../page/searchPage';
 
 let email = (Math.random() + 1).toString(36).substring(5) + '@example.com';
 let login = (Math.random() + 1).toString(36).substring(5);
+let password = (Math.random() + 1).toString(36).substring(5) + '@example';
 let loginIn = 'gonegirl';
 let passwordLogin = 'GEDXbBAT6PNTmW7';
 
-test('ID_0001', async ({ page, baseURL}) => {
+test.beforeEach(async ({ page, baseURL }) => {
+    await page.goto(`${baseURL}`);
+});
+
+test.afterEach(async ({ page }, testInfo) => {
+    await testInfo.attach("basic-page-screen", {
+        body: await page.screenshot(),
+        contentType: "image/png",
+      });
+})
+
+test('ID_0001', async ({ page }) => {
 
     const register = new RegistrationPage(page);
-    await page.goto(`${baseURL}`);
     await register.clickRegisterLink();
     await register.enterUserLogin(login);
-    await register.enterPassword("7PutG1xPjbRn1pD");
-    await register.enterConfirmPassword("7PutG1xPjbRn1pD");
+    await register.enterPassword(password);
+    await register.enterConfirmPassword(password);
     await register.enterFirstName("User");
     await register.enterLastName("User");
     await register.enterEmail(email);
     await register.clickDropDownLanguage();
-    await register.clickLanguage();
-    await register.enterIrkNick("");
+    await register.enterIrcNick("");
     await register.clickAcceptButton();
-    // await page.waitForTimeout(10000)
-    await expect(page.locator('#flash_notice')).toBeVisible();
+    await expect(register.acceptNotice).toContainText('Account was successfully created.');
     
 })
 
 test('ID_0002',  async ({page, baseURL}) => {
     
-    const register2 = new RegistrationPage(page);
-    await page.goto(`${baseURL}`);
-    await register2.clickRegisterLink();
-    await register2.enterUserLogin("");
-    await register2.enterPassword("");
-    await register2.enterConfirmPassword("");
-    await register2.enterFirstName("");
-    await register2.enterLastName("");
-    await register2.enterEmail("");
-    await register2.enterIrkNick("");
-    await register2.clickAcceptButton();
-
-    await expect(page.locator('#errorExplanation')).toBeVisible();
-
+    const registerEmptyField = new RegistrationPage(page);
+    await registerEmptyField.clickRegisterLink();
+    await registerEmptyField.clickAcceptButton();
+    await expect(registerEmptyField.errorMessage).toContainText([
+    'Login can\'t be blank',
+    'First name can\'t be blank',
+    'Last name can\'t be blank',
+    'Email can\'t be blank',
+    'Password is too short (minimum is 4 characters)']);
 
 })
 
 test('ID_0003', async ({ page, baseURL}) => {
     
     const signIn = new AuthorizationPage(page);
-    await page.goto(`${baseURL}`);
     await signIn.clickSignInLink();
     await signIn.enterUserLogin(loginIn);
     await signIn.enterPassword(passwordLogin);
@@ -62,24 +65,18 @@ test('ID_0003', async ({ page, baseURL}) => {
 test('ID_0004', async ({ page, baseURL}) => {
 
     const searchValid = new SearchPage(page);
-    await page.goto(`${baseURL}`);
     await searchValid.clickSearchField();
     await searchValid.enterSearchField("install");
-    await searchValid.searchField.press('Enter');
-    // await page.waitForTimeout(3000);
-    expect(page.locator('#search-results', { hasText: 'install' }));
-    
+    expect((searchValid.searchResult, { hasText: 'install'}));
+
 })
 
 test('ID_0005', async ({ page, baseURL}) => {
 
-    const searchValid = new SearchPage(page);
-    await page.goto(`${baseURL}`);
-    await searchValid.clickSearchField();
-    await searchValid.enterSearchField("kitchen2345");
-    await searchValid.searchField.press('Enter');
-    // await page.waitForTimeout(3000);
-    expect(page.locator('#search-results-counts', { hasText: 'Results (0)' }));
+    const searchInValid = new SearchPage(page);
+    await searchInValid.clickSearchField();
+    await searchInValid.enterSearchField(login);
+    expect((searchInValid.noFoundMessage, { hasText: 'Results (0)' }));
     
 })
 
