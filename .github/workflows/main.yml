@@ -27,4 +27,4 @@ jobs:
           retention-days: 30
 
       - name: Allure report
-        run: allure serve allure-report/
+        run: allure serve allure-results
