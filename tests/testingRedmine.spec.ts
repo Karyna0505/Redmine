@@ -20,7 +20,7 @@ test.afterEach(async ({ page }, testInfo) => {
       });
 })
 
-test('ID_0001', async ({ page }) => {
+test('ID_0001 Checking registration form on the site with valid data', async ({ page }) => {
 
     const register = new RegistrationPage(page);
     await register.clickRegisterLink();
@@ -37,7 +37,7 @@ test('ID_0001', async ({ page }) => {
     
 })
 
-test('ID_0002',  async ({page, baseURL}) => {
+test('ID_0002 Checking registration form on the site with invalid data (empty field)',  async ({page, baseURL}) => {
     
     const registerEmptyField = new RegistrationPage(page);
     await registerEmptyField.clickRegisterLink();
@@ -51,7 +51,7 @@ test('ID_0002',  async ({page, baseURL}) => {
 
 })
 
-test('ID_0003', async ({ page, baseURL}) => {
+test('ID_0003 Checking authorization on the site with valid data', async ({ page, baseURL}) => {
     
     const signIn = new AuthorizationPage(page);
     await signIn.clickSignInLink();
@@ -62,7 +62,7 @@ test('ID_0003', async ({ page, baseURL}) => {
 
 })
 
-test('ID_0004', async ({ page, baseURL}) => {
+test('ID_0004 Checking search results with entered valid data.', async ({ page, baseURL}) => {
 
     const searchValid = new SearchPage(page);
     await searchValid.clickSearchField();
@@ -71,7 +71,7 @@ test('ID_0004', async ({ page, baseURL}) => {
 
 })
 
-test('ID_0005', async ({ page, baseURL}) => {
+test('ID_0005 Checking search results with entered invalid data.', async ({ page, baseURL}) => {
 
     const searchInValid = new SearchPage(page);
     await searchInValid.clickSearchField();

@@ -25,3 +25,6 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+      - name: Allure report
+        run: allure serve allure-report/

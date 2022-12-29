@@ -37,3 +37,5 @@ More details how to make new allure-report on the link https://testersdock.com/a
 ```bash
 allure open allure-report
 
+ allure serve allure-report/
+
