@@ -8,6 +8,7 @@ let login = (Math.random() + 1).toString(36).substring(5);
 let password = (Math.random() + 1).toString(36).substring(5) + '@example';
 let loginIn = 'gonegirl';
 let passwordLogin = 'GEDXbBAT6PNTmW7';
+let userName = 'User';
 
 test.beforeEach(async ({ page, baseURL }) => {
     await page.goto(`${baseURL}`);
@@ -27,8 +28,8 @@ test('ID_0001 Checking registration form on the site with valid data', async ({ 
     await register.enterUserLogin(login);
     await register.enterPassword(password);
     await register.enterConfirmPassword(password);
-    await register.enterFirstName("User");
-    await register.enterLastName("User");
+    await register.enterFirstName(userName);
+    await register.enterLastName(userName);
     await register.enterEmail(email);
     await register.clickDropDownLanguage();
     await register.enterIrcNick("");
@@ -37,7 +38,7 @@ test('ID_0001 Checking registration form on the site with valid data', async ({ 
     
 })
 
-test('ID_0002 Checking registration form on the site with invalid data (empty field)',  async ({page, baseURL}) => {
+test('ID_0002 Checking registration form on the site with invalid data (empty field)',  async ({ page }) => {
     
     const registerEmptyField = new RegistrationPage(page);
     await registerEmptyField.clickRegisterLink();
@@ -51,7 +52,7 @@ test('ID_0002 Checking registration form on the site with invalid data (empty fi
 
 })
 
-test('ID_0003 Checking authorization on the site with valid data', async ({ page, baseURL}) => {
+test('ID_0003 Checking authorization on the site with valid data', async ({ page }) => {
     
     const signIn = new AuthorizationPage(page);
     await signIn.clickSignInLink();
@@ -62,7 +63,7 @@ test('ID_0003 Checking authorization on the site with valid data', async ({ page
 
 })
 
-test('ID_0004 Checking search results with entered valid data.', async ({ page, baseURL}) => {
+test('ID_0004 Checking search results with entered valid data.', async ({ page }) => {
 
     const searchValid = new SearchPage(page);
     await searchValid.clickSearchField();
@@ -71,7 +72,7 @@ test('ID_0004 Checking search results with entered valid data.', async ({ page, 
 
 })
 
-test('ID_0005 Checking search results with entered invalid data.', async ({ page, baseURL}) => {
+test('ID_0005 Checking search results with entered invalid data.', async ({ page }) => {
 
     const searchInValid = new SearchPage(page);
     await searchInValid.clickSearchField();
