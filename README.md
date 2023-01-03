@@ -20,7 +20,7 @@ Playwright Test runner "REDMINE" project
 ### How to run the tests 
 
 I defined a default configuration (playwright.config.ts)  which will be executed when you run. You can run a single test, a set of tests or all tests.
-    ```bash
+    
     npx playwright test
 More details how to run on the link https://playwright.dev/docs/running-tests#command-line.
 
